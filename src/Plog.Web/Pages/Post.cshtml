@@ -1,0 +1,13 @@
+﻿@page
+@model PostModel
+@{
+    ViewData["Title"] = Model.Post.Title;
+}
+
+<div class="post mb-4">
+    <h2>@Model.Post.Title</h2>
+    <p><small>@Model.Post.Created.ToString("MMMM d, yyyy")</small></p>
+    <div class="post-content">
+        @Model.Post.Content
+    </div>
+</div>
