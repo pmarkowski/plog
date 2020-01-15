@@ -21,18 +21,30 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        <div class="row">
+            <main role="main" class="pb-3 col-md-8">
+                @RenderBody()
+            </main>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Philip Markowski</h5>
+                        <p class="card-text">A neat description about me</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <a href="https://github.com/pmarkowski">
+                            <li class="list-group-item">GitHub</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 
     <footer class="border-top footer text-muted">

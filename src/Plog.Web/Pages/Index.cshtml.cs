@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Plog.Web.Data;
 using Plog.Web.Models;
@@ -23,7 +24,7 @@ namespace Plog.Web.Pages
             this.dbContext = dbContext;
         }
 
-        public void OnGetAsync()
+        public async Task OnGetAsync()
         {
             Posts = await dbContext.Posts
                 .OrderByDescending(post => post.Created)

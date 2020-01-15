@@ -4,7 +4,13 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@foreach (var post in Model.Posts)
+{
+    <div class="post mb-4">
+        <h2>@post.Title</h2>
+        <p><small>@post.Created.ToString("MMMM d, yyyy")</small></p>
+        <div class="post-content">
+            @post.Content
+        </div>
+    </div>
+}
