@@ -1,13 +1,14 @@
 ﻿@page
+@using Markdig
 @model PostModel
 @{
     ViewData["Title"] = Model.Post.Title;
 }
 
 <div class="post mb-4">
-    <h2>@Model.Post.Title</h2>
+    <h1>@Model.Post.Title</h1>
     <p><small>@Model.Post.Created.ToString("MMMM d, yyyy")</small></p>
     <div class="post-content">
-        @Model.Post.Content
+        @Html.Raw(Markdown.ToHtml(Model.Post.Content))
     </div>
 </div>
