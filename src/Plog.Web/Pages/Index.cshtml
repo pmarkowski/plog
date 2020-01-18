@@ -8,7 +8,7 @@
 @foreach (var post in Model.Posts)
 {
     <div class="post mb-4">
-        <h1><a asp-page="./post" asp-route-postId="@post.PostId">@post.Title</a></h1>
+        <h1><a asp-page="./post" asp-route-postId="@post.PostId" asp-route-title="@post.Title.ToLowerInvariant().Replace(' ', '-')">@post.Title</a></h1>
         <p><small>@post.Created.ToString("MMMM d, yyyy")</small></p>
         <div class="post-content">
             @Html.Raw(Markdown.ToHtml(post.Content))
