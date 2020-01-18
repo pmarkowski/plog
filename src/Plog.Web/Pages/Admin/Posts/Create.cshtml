@@ -1,0 +1,59 @@
+@page
+@model Plog.Web.Pages.Admin.Posts.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>New Post</h1>
+<hr />
+<form id="new-post-form" method="post">
+    <div class="row">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-md-10">
+            <div class="form-group form-inline">
+                <label asp-for="Post.Title" class="control-label col-sm-2"></label>
+                <input asp-for="Post.Title" class="form-control col-sm-10" />
+                <span asp-validation-for="Post.Title" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+        <input type="hidden" asp-for="Post.Content" />
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <div id="post-content" style="height:600px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/lib/monaco-editor/min/vs/loader.js"></script>
+    <script>
+        var editor;
+        require.config({ paths: { 'vs': '../../lib/monaco-editor/min/vs' }});
+        require(['vs/editor/editor.main'], function() {
+            editor = monaco.editor.create(document.getElementById('post-content'), {
+                minimap: {
+                    enabled: false
+                },
+                language: 'markdown'
+            });
+        });
+        $("#new-post-form").submit(function () {
+            $("#Post_Content").val(editor.getValue());
+        });
+    </script>
+}
